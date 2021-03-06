@@ -86,8 +86,11 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <!-- 若主键是自动生成的，那么使用以下配置；否则注释掉以下配置 -->
-            <generatedKey column="${table.idColumn}" sqlStatement="select uuid() from dual"/>
+            <!--
+                uuid使用配置：select uuid() from dual
+                若主键是自动生成的，那么使用以下配置；否则注释掉以下配置
+            -->
+            <generatedKey column="${table.idColumn}" sqlStatement="SELECT LAST_INSERT_ID()"/>
         </table>
     </context>
 </generatorConfiguration>
