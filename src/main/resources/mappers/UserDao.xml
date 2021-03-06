@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gudao.generator.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_info" jdbcType="VARCHAR" property="userInfo" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.User">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select uuid() from dual
+    </selectKey>
+    insert into user (id, user_name, user_info, 
+      user_email, role_id)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userInfo,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_info = #{userInfo,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, user_info, user_email, role_id
+    from user
+  </select>
+</mapper>

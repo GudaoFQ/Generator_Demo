@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--修改
+        配置参数位置
+    -->
+    <properties resource="generator/generatorConfig.properties"/>
+
+    <!-- 配置table表信息内容体，targetRuntime指定采用MyBatis3的版本 -->
+    <context id="tables" targetRuntime="MyBatis3Simple">
+        <!-- 生成的 Java 文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- 生成的pojo，将implements Serializable-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 生成实体添加toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!--修改
+            抑制生成注释，由于生成的注释都是英文的，可以不让它生成
+            type修改为自己定义的注释配置实体；不需要中文实体字段中文注释的话需要将type删除
+        -->
+        <commentGenerator type="com.gudao.generator.generatorconfig.comment.MySQLCommentGenerator">
+            <!-- suppressAllComments:阻止生成注释，默认为false -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- suppressDate:阻止生成的注释包含时间戳，默认为false -->
+            <property name="suppressDate" value="true"/>
+            <!-- 生成创建人 -->
+            <property name="author" value="Gudao"/>
+            <!-- 生成创建日期 -->
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--
+            默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--修改
+            生成model类，targetPackage指定model类的包名， targetProject指定生成的model放在项目的哪个工程下面【分布式中会把实体类放在common模块下，这样就要修改targetProject】
+        -->
+        <javaModelGenerator targetPackage="${entity.targetPackage}" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!--修改
+            生成MyBatis的Mapper.xml文件，targetPackage指定mapper.xml文件的包名， targetProject指定生成的mapper.xml放在项目的哪个工程下面
+        -->
+        <sqlMapGenerator targetPackage="${xml.targetPackage}" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!--修改
+            生成MyBatis的Mapper接口类文件,targetPackage指定Mapper接口类的包名， targetProject指定生成的Mapper接口xml放在项目的哪个工程下面
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.targetPackage}" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!--修改
+            下面的enable...注释调就会产生一个example类，可以做sql修改
+        -->
+        <table tableName="${table.tableName}"
+               domainObjectName="${table.domainObjectName}"
+               mapperName="${table.domainObjectName}Dao"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 若主键是自动生成的，那么使用以下配置；否则注释掉以下配置 -->
+            <generatedKey column="${table.idColumn}" sqlStatement="select uuid() from dual"/>
+        </table>
+    </context>
+</generatorConfiguration>
