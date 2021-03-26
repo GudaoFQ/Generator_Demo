@@ -43,6 +43,8 @@
                         connectionURL="${jdbc.url}"
                         userId="${jdbc.username}"
                         password="${jdbc.password}">
+            <!-- 防止mapper.xml中生成重复sql -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
         <!--
