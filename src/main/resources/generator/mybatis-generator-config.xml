@@ -4,9 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <!--修改
-        配置参数位置
-    -->
+    <!-- todo 修改：配置参数位置 -->
     <properties resource="generator/generatorConfig.properties"/>
 
     <!-- 配置table表信息内容体，targetRuntime指定采用MyBatis3的版本 -->
@@ -21,21 +19,20 @@
         <!-- 生成的pojo，将implements Serializable-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!-- 生成实体添加toString方法 -->
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
-        <!--修改
-            抑制生成注释，由于生成的注释都是英文的，可以不让它生成
-            type修改为自己定义的注释配置实体；不需要中文实体字段中文注释的话需要将type删除
-        -->
+        <!-- todo 修改：抑制生成注释，由于生成的注释都是英文的，可以不让它生成，将type修改为自己定义的注释配置实体；不需要按照自己的配置信息生成实体字段注解就将type="com.wedding.project.configuration.generator.comment.MySQLCommentGenerator"删除 -->
         <commentGenerator type="com.gudao.generator.generatorconfig.comment.MySQLCommentGenerator">
             <!-- suppressAllComments:阻止生成注释，默认为false -->
             <property name="suppressAllComments" value="false"/>
             <!-- suppressDate:阻止生成的注释包含时间戳，默认为false -->
             <property name="suppressDate" value="true"/>
             <!-- 生成创建人 -->
-            <property name="author" value="Gudao"/>
+            <property name="Author" value="Programmer"/>
             <!-- 生成创建日期 -->
-            <property name="dateFormat" value="yyyy/MM/dd"/>
+            <property name="DateFormat" value="yyyy/MM/dd"/>
         </commentGenerator>
 
         <!-- 配置数据库连接信息 -->
@@ -43,8 +40,10 @@
                         connectionURL="${jdbc.url}"
                         userId="${jdbc.username}"
                         password="${jdbc.password}">
-            <!-- 防止mapper.xml中生成重复sql -->
+            <!-- 防止xml中生成重复sql语句 -->
             <property name="nullCatalogMeansCurrent" value="true"/>
+            <!-- 防止thint转换为boolean类型 -->
+            <property name="tinyInt1isBit" value="false"/>
         </jdbcConnection>
 
         <!--
@@ -55,34 +54,26 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <!--修改
-            生成model类，targetPackage指定model类的包名， targetProject指定生成的model放在项目的哪个工程下面【分布式中会把实体类放在common模块下，这样就要修改targetProject】
-        -->
+        <!-- todo 修改：生成model类，targetPackage指定model类的包名， targetProject指定生成的model放在项目的哪个工程下面【分布式中会把实体类放在common模块下，这样就要修改targetProject】 -->
         <javaModelGenerator targetPackage="${entity.targetPackage}" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="false" />
         </javaModelGenerator>
 
-        <!--修改
-            生成MyBatis的Mapper.xml文件，targetPackage指定mapper.xml文件的包名， targetProject指定生成的mapper.xml放在项目的哪个工程下面
-        -->
+        <!-- todo 修改：生成MyBatis的Mapper.xml文件，targetPackage指定mapper.xml文件的包名， targetProject指定生成的mapper.xml放在项目的哪个工程下面 -->
         <sqlMapGenerator targetPackage="${xml.targetPackage}" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
-        <!--修改
-            生成MyBatis的Mapper接口类文件,targetPackage指定Mapper接口类的包名， targetProject指定生成的Mapper接口xml放在项目的哪个工程下面
-        -->
+        <!-- todo 修改：生成MyBatis的Mapper接口类文件,targetPackage指定Mapper接口类的包名， targetProject指定生成的Mapper接口xml放在项目的哪个工程下面 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.targetPackage}" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-        <!--修改
-            下面的enable...注释调就会产生一个example类，可以做sql修改
-        -->
+        <!-- todo 修改：下面的enable...注释调就会产生一个example类，可以做sql修改 -->
         <table tableName="${table.tableName}"
                domainObjectName="${table.domainObjectName}"
-               mapperName="${table.domainObjectName}Dao"
+               mapperName="${table.domainObjectName}Mapper"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -90,9 +81,12 @@
                selectByExampleQueryId="false">
             <!--
                 uuid使用配置：select uuid() from dual
+                手动自增配置：SELECT LAST_INSERT_ID()
                 若主键是自动生成的，那么使用以下配置；否则注释掉以下配置
             -->
-            <generatedKey column="${table.idColumn}" sqlStatement="SELECT LAST_INSERT_ID()"/>
+            <!--<generatedKey column="${table.idColumn}" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
+            <!-- 将指定字段中的thint类型映射为Integer类型 -->
+            <!--<columnOverride column="status" javaType="Integer"/>-->
         </table>
     </context>
 </generatorConfiguration>
