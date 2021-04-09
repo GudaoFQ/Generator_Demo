@@ -15,7 +15,7 @@ import java.util.Properties;
  * @Description: Lombok集成入实体
  */
 public class LombokPlugin extends PluginAdapter {
-    // [方法二可以将此处注释]属性，即配置在 commentGenerator 标签之内的 Property 标签
+    // [方法二可以将此处注释]属性，即配置在 plugin 标签之内的 Property 标签
     private final Properties properties = super.getProperties();
 
     public boolean validate(List<String> list) {
