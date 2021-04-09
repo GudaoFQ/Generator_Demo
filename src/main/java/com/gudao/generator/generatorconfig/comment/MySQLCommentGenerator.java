@@ -10,13 +10,10 @@ import java.util.Date;
 import java.util.Properties;
 
 /**
- * Author : GuDao
- * 2021-03-06
- *
- * 用于 Mybatis generator 生成代码时从数据库表注释生成实体类注释
- *
+ * @Auther: Gudao
+ * @Date: 2021/04/09
+ * @Description: 用于 Mybatis generator 生成代码时从数据库表注释生成实体类注释
  */
-
 public class MySQLCommentGenerator extends EmptyCommentGenerator {
     // 属性，即配置在 commentGenerator 标签之内的 Property 标签
     private final Properties properties;
@@ -33,18 +30,17 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
 
     @Override
     public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        String author = properties.getProperty("author");
-        String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
+        String author = properties.getProperty("Author");
+        String dateFormat = properties.getProperty("DateFormat", "yyyy-MM-dd");
         SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
 
         // 获取表注释
         String remarks = introspectedTable.getRemarks();
 
         topLevelClass.addJavaDocLine("/**");
-        topLevelClass.addJavaDocLine(" * " + remarks);
-        topLevelClass.addJavaDocLine(" *");
-        topLevelClass.addJavaDocLine(" * @author " + author);
-        topLevelClass.addJavaDocLine(" * @date   " + dateFormatter.format(new Date()));
+        topLevelClass.addJavaDocLine(" * @Author: " + author);
+        topLevelClass.addJavaDocLine(" * @DateFormat: " + dateFormatter.format(new Date()));
+        topLevelClass.addJavaDocLine(" * @Description: " + remarks);
         topLevelClass.addJavaDocLine(" */");
     }
 

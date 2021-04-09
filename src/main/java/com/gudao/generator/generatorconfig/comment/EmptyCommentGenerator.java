@@ -16,10 +16,10 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * Author : GuDao
- * 2021-03-06
+ * @Auther: Gudao
+ * @Date: 2021/03/29
+ * @Description: 实体类逆向工程配置过渡
  */
-
 public class EmptyCommentGenerator implements CommentGenerator {
 
     @Override
