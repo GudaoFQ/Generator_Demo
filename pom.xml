@@ -87,7 +87,7 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <configuration>
-                    <configurationFile>${basedir}/src/main/resources/genreator/mybatis-generator-config.xml</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/generator/mybatis-generator-config.xml</configurationFile>
                     &lt;!&ndash;允许移动生成的文件 &ndash;&gt;
                     <verbose>true</verbose>
                     &lt;!&ndash; 是否覆盖 &ndash;&gt;
@@ -98,12 +98,12 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.40</version>
+                        <version>${mysql.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.4.0</version>
+                        <version>${generator.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>-->

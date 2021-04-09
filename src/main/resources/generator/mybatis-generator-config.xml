@@ -22,14 +22,13 @@
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
-        <!-- todo 修改：集成lombok，将type修改为自定义的lombok配置实体位置[不集成lombok直接将下面的配置注释] -->
+        <!-- todo 修改：集成lombok，将type修改为自定义的lombok配置实体位置[不集成lombok直接将下面的配置注释]；不需要按照自己的配置信息生成实体字段注解就将plugin整个删除 -->
         <plugin type="com.gudao.generator.generatorconfig.comment.LombokPlugin">
             <!-- 添加lombok中的jar包，留作在配置注释方法中使用 -->
             <property name="lombokDataAnnotationPackage" value="lombok.Data" />
             <property name="lombokToStringAnnotationPackage" value="lombok.ToString" />
         </plugin>
-
-        <!-- todo 修改：集成swagger，将type修改为自定义的swagger配置实体位置[不集成swagger直接将下面的配置注释] -->
+        <!-- todo 修改：集成swagger，将type修改为自定义的swagger配置实体位置[不集成swagger直接将下面的配置注释]；不需要按照自己的配置信息生成实体字段注解就将plugin整个删除 -->
         <plugin type="com.gudao.generator.generatorconfig.comment.SwaggerPlugin">
             <!-- 添加swagger中的jar包，留作在配置注释方法中使用 -->
             <property name="apiModelAnnotationPackage" value="io.swagger.annotations.ApiModel" />
