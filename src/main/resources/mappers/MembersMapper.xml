@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gudao.generator.dao.MembersMapper">
+  <resultMap id="BaseResultMap" type="com.gudao.generator.model.Members">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phonenumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="auth_code" jdbcType="VARCHAR" property="authCode" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_user_id" jdbcType="VARCHAR" property="createUserId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user_id" jdbcType="VARCHAR" property="updateUserId" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="login_count" jdbcType="INTEGER" property="loginCount" />
+    <result column="login_date" jdbcType="TIMESTAMP" property="loginDate" />
+    <result column="forgot_status" jdbcType="TINYINT" property="forgotStatus" />
+    <result column="remove_status" jdbcType="TINYINT" property="removeStatus" />
+    <result column="forgot_end_time" jdbcType="TIMESTAMP" property="forgotEndTime" />
+    <result column="system_role" jdbcType="VARCHAR" property="systemRole" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from members
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gudao.generator.model.Members">
+    insert into members (id, department_id, login_name, 
+      user_name, email, phonenumber, 
+      sex, password, salt, auth_code, 
+      status, create_time, create_user, 
+      create_user_id, update_time, update_user_id, 
+      update_user, login_count, login_date, 
+      forgot_status, remove_status, forgot_end_time, 
+      system_role)
+    values (#{id,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{authCode,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{loginCount,jdbcType=INTEGER}, #{loginDate,jdbcType=TIMESTAMP}, 
+      #{forgotStatus,jdbcType=TINYINT}, #{removeStatus,jdbcType=TINYINT}, #{forgotEndTime,jdbcType=TIMESTAMP}, 
+      #{systemRole,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.gudao.generator.model.Members">
+    update members
+    set department_id = #{departmentId,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      auth_code = #{authCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      login_count = #{loginCount,jdbcType=INTEGER},
+      login_date = #{loginDate,jdbcType=TIMESTAMP},
+      forgot_status = #{forgotStatus,jdbcType=TINYINT},
+      remove_status = #{removeStatus,jdbcType=TINYINT},
+      forgot_end_time = #{forgotEndTime,jdbcType=TIMESTAMP},
+      system_role = #{systemRole,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, department_id, login_name, user_name, email, phonenumber, sex, password, 
+    salt, auth_code, status, create_time, create_user, create_user_id, update_time, update_user_id, 
+    update_user, login_count, login_date, forgot_status, remove_status, forgot_end_time, 
+    system_role
+    from members
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, department_id, login_name, user_name, email, phonenumber, sex, password, 
+    salt, auth_code, status, create_time, create_user, create_user_id, update_time, update_user_id, 
+    update_user, login_count, login_date, forgot_status, remove_status, forgot_end_time, 
+    system_role
+    from members
+  </select>
+</mapper>
