@@ -22,6 +22,12 @@
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- todo 修改：集成lombok，将type修改为自定义的lombok配置实体位置 -->
+        <plugin type="com.gudao.generator.generatorconfig.comment.LombokPlugin">
+            <!-- 配置lombok中需要的jar包 -->
+            <property name="lombokDataAnnotationPackage" value="lombok.Data" />
+            <property name="lombokToStringAnnotationPackage" value="lombok.ToString" />
+        </plugin>
 
         <!-- todo 修改：抑制生成注释，由于生成的注释都是英文的，可以不让它生成，将type修改为自己定义的注释配置实体位置；不需要按照自己的配置信息生成实体字段注解就将type="com.wedding.project.configuration.generator.comment.MySQLCommentGenerator"删除 -->
         <commentGenerator type="com.gudao.generator.generatorconfig.comment.MySQLCommentGenerator">
